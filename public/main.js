@@ -20,6 +20,9 @@ const pokemonSpriteArea = document.getElementById('pokemonSprites');
 const shinyLastPokemon = document.getElementById('shinyLastPokemon');
 const clearPokemonButton = document.getElementById('clearPokemon');
 
+
+const breakSite = document.getElementById('breakSite');
+
 // TODO: Store the image URLs for the last Pokemon.
 let lastPokemon = [1, false]; // Set to Bulbasaur by default.
 
@@ -78,11 +81,20 @@ function setCounter(num) {
 
 randomButton.addEventListener('click', randButton)
 randomShinyButton.addEventListener('click', randButton)
+clearPokemonButton.addEventListener('click', clearList)
+breakSite.addEventListener('click', () => {
+    axios.get('/rollbar/functionTest').then(res => {
+        alert(res.data)
+        console.log(res);
+    }).catch(err => console.log(err));
+})
 
 // TODO: Program a way to just load the other image instead of making a whole new request.
 shinyLastPokemon.addEventListener('click', () => {
     getPokemon(lastPokemon[0], !lastPokemon[1])
 })
-clearPokemonButton.addEventListener('click', clearList)
+
 
 console.log(randomButton);
+
+
