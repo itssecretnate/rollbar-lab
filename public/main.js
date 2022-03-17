@@ -22,6 +22,7 @@ const clearPokemonButton = document.getElementById('clearPokemon');
 
 
 const breakSite = document.getElementById('breakSite');
+const criticalBreakSite = document.getElementById('criticalBreakSite');
 
 // TODO: Store the image URLs for the last Pokemon.
 let lastPokemon = [1, false]; // Set to Bulbasaur by default.
@@ -82,8 +83,16 @@ function setCounter(num) {
 randomButton.addEventListener('click', randButton)
 randomShinyButton.addEventListener('click', randButton)
 clearPokemonButton.addEventListener('click', clearList)
+
 breakSite.addEventListener('click', () => {
     axios.get('/rollbar/functionTest').then(res => {
+        alert(res.data)
+        console.log(res);
+    }).catch(err => console.log(err));
+})
+
+criticalBreakSite.addEventListener('click', () => {
+    axios.get('/rollbar/criticalFunctionTest').then(res => {
         alert(res.data)
         console.log(res);
     }).catch(err => console.log(err));

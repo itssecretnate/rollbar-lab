@@ -24,13 +24,11 @@ app.use(express.static(path.join(__dirname, "../public")));
 // Add the images folder.
 app.use('/images', express.static(path.join(__dirname, "../public/images")))
 
-
-
 const port = process.env.PORT || 4005;
 
 app.listen(port, () => {
     console.log(`Server is hosted on ${port}`)
-    rollbar.log("Server initialized.")
+    rollbar.info(`Server initialized on ${port}`)
 })
 
 // Rollbar Stuff
@@ -38,12 +36,22 @@ app.listen(port, () => {
 app.get('/rollbar/functionTest', (req, res) => {
     
     res.status(200).send("Break site request received.");
-    console.log("Funcion Test hit.")
     try {
         nonExistentFunction();
     } catch (error) {
         // console.error(error);
         rollbar.error(error)
+    }
+})
+
+app.get('/rollbar/criticalFunctionTest', (req, res) => {
+    
+    res.status(200).send("Critical log request received.");
+    try {
+        getPokemon(0);
+    } catch (error) {
+        console.error(error);
+        rollbar.critical(error)
     }
 })
 
