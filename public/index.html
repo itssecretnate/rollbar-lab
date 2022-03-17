@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/index.css">
+  <title>Nate's Website</title>
+</head>
+<body>
+  <h1 style="text-align: center;">Nate was here!</h1>
+  <img id="meme" src="/images/136.jpg"/>
+  <br>
+  <h1 class="pokemon">Pokémon Stuff - Powered by PokeAPI</h1>
+
+  <h2 id="pokemonCounter"></h2>
+
+  <button id="randPokemon">Random Pokémon</button>
+  <button id="randShinyPokemon">Random Shiny Pokémon</button>
+  <!-- This used to be just to just make the last Pokemon shiny. Decided to just make it invert. -->
+  <button id="shinyLastPokemon">Invert last Pokémon</button>
+  <button id="clearPokemon">Clear Pokémon</button>
+  
+
+  <!-- <button id="randShinyPokemon">Random Shiny Pokémon</button> -->
+
+  <!-- style="display: inline; margin-left: auto; margin-right: auto;" -->
+  <div id="pokemonSprites">
+  </div>
+
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="./main.js"></script>
+</body>
+</html>
